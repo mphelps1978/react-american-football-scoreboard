@@ -7,7 +7,7 @@ function App() {
   //TODO: STEP 2 - Establish your applictaion's state with some useState hooks.  You'll need one for the home score and another for the away score.
   const [awayScore, incrementAwayScore] = useState(0);
   const [homeScore, incrementHomeScore] = useState(0);
-  const [quarter, changeQuarter] = useState(1);
+  // const [quarter, changeQuarter] = useState(1);
   return (
     <div className="container">
       <section className="scoreboard">
@@ -25,7 +25,7 @@ function App() {
             <div className="away__score">{awayScore}</div>
           </div>
         </div>
-        <BottomRow quarter={quarter} />
+        <BottomRow />
       </section>
       <section className="buttons">
         <div className="homeButtons">
@@ -37,7 +37,7 @@ function App() {
             Home Touchdown
           </button>
           <button
-            onClick={() => incrementHomeScore(homeScore + 3)}
+            onClick={() => incrementHomeScore(homeScore + 1)}
             className="homeButtons__fieldGoal"
           >
             Home Field Goal
@@ -51,7 +51,7 @@ function App() {
             Away Touchdown
           </button>
           <button
-            onClick={() => incrementAwayScore(awayScore + 3)}
+            onClick={() => incrementAwayScore(awayScore + 1)}
             className="awayButtons__fieldGoal"
           >
             Away Field Goal
@@ -59,12 +59,12 @@ function App() {
         </div>
       </section>
       <section>
-        <div>
+        {/* <div>
           <button onClick={() => changeQuarter(1)}>1st</button>
           <button onClick={() => changeQuarter(2)}>2nd</button>
           <button onClick={() => changeQuarter(3)}>3rd</button>
           <button onClick={() => changeQuarter(4)}>4th</button>
-        </div>
+        </div> */}
       </section>
     </div>
   );
