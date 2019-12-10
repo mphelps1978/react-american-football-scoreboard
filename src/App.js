@@ -5,9 +5,19 @@ import BottomRow from "./BottomRow";
 
 function App() {
   //TODO: STEP 2 - Establish your applictaion's state with some useState hooks.  You'll need one for the home score and another for the away score.
+
+  // First we need to set the variables that will be used across the app in both components
   const [awayScore, incrementAwayScore] = useState(0);
   const [homeScore, incrementHomeScore] = useState(0);
-  // const [quarter, changeQuarter] = useState(1);
+
+  const [quarter, changeQuarter] = useState(1);
+  const [currentDown, setCurrentDown] = useState(1);
+  const [posession, setPosession] = useState("home");
+  const [ballOn, setBallOn] = useState(50);
+  const [yardsTG, setYardsTG] = useState(10);
+  // const [message, setMessage] = useState("Clock Running"); <-- I was going to set up FULLY automated scoreboard, but got tired..
+  const [messageBG, setMessagBG] = useState("defaultBG");
+
   return (
     <div className="container">
       <section className="scoreboard">
@@ -25,8 +35,19 @@ function App() {
             <div className="away__score">{awayScore}</div>
           </div>
         </div>
-        <BottomRow />
+        <BottomRow
+          currentDown={currentDown}
+          yardsTG={yardsTG}
+          posession={posession}
+          ballOn={ballOn}
+          quarter={quarter}
+        />
       </section>
+
+      {/* <section className="messages">
+        <h3 className={messageBG}>{message}</h3>
+      </section> */}
+
       <section className="buttons">
         <div className="homeButtons">
           {/* TODO STEP 4 - Now we need to attach our state setter functions to click listeners. */}
@@ -59,12 +80,13 @@ function App() {
         </div>
       </section>
       <section>
-        {/* <div>
+        <div className="buttons">
+          <h3>Quarter:</h3>
           <button onClick={() => changeQuarter(1)}>1st</button>
           <button onClick={() => changeQuarter(2)}>2nd</button>
           <button onClick={() => changeQuarter(3)}>3rd</button>
           <button onClick={() => changeQuarter(4)}>4th</button>
-        </div> */}
+        </div>
       </section>
     </div>
   );
